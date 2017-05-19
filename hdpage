@@ -1,0 +1,40 @@
+#! /usr/bin/env sh
+
+if [ "$1" != "-p" ]; then
+        exit 1
+fi
+
+if [ "$2" = "-t" ]; then
+        TITLE="$3"
+        if [ -z "$TITLE" ]; then
+                echo "TITLE unset"
+                exit 2
+        fi
+fi
+
+DOCTYPE_HEADER='<!DOCTYPE html>'
+HTML='<html>'
+if [ ! -z $LANG ]; then
+        HTML="<html lang=$LANG>"
+fi
+if [ -z $TITLE ]; then
+        TITLE='web page'
+        HEADER="<head>\n
+\t<meta charset=\"utf-8\">\n
+\t<title>$TITLE</title>\n
+\t<link rel=\"stylesheet\" href=\"../style.css\">\n
+\t<script src=\"script.js\"></script>\n
+</head>\n
+"
+else
+        HEADER="<head>\n
+\t<meta charset=\"utf-8\">\n
+\t<title>$TITLE</title>\n
+\t<link rel=\"stylesheet\" href=\"../style.css\">\n
+\t<script src=\"script.js\"></script>\n
+</head>\n
+"
+fi
+
+echo "$DOCTYPE_HEADER"
+echo "$HEADER"
