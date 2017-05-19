@@ -17,7 +17,8 @@ HTML='<html>'
 if [ ! -z $LANG ]; then
         HTML="<html lang=$LANG>"
 fi
-if [ -z $TITLE ]; then
+
+if [ -z "$TITLE" ]; then
         TITLE='web page'
         HEADER="<head>\n
 \t<meta charset=\"utf-8\">\n
@@ -37,4 +38,5 @@ else
 fi
 
 echo "$DOCTYPE_HEADER"
+echo "$HTML"
 echo "$HEADER"

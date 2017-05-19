@@ -1,0 +1,6 @@
+#! /usr/bin/env sh
+hdpage -p -t "hdpage demo"
+echo "        <body>"
+echo "                <p> hdpage demo</p>"
+echo "        </body>"
+echo "</html>"
