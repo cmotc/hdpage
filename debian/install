@@ -1,0 +1,6 @@
+hdpage usr/bin
+hdpage-demo usr/bin
+hdpage.html usr/share/doc/hdpage
+index.html usr/share/doc/hdpage
+style.css usr/share/doc/hdpage
+LICENSE usr/share/doc/hdpage
