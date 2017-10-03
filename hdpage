@@ -61,6 +61,6 @@ else
 "
 fi
 
-echo "$DOCTYPE_HEADER"
-echo "$HTML"
-echo "$HEADER"
+printf "$DOCTYPE_HEADER"
+printf "$HTML"
+printf "$HEADER"
