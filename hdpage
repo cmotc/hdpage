@@ -4,13 +4,37 @@ if [ "$1" != "-p" ]; then
         exit 1
 fi
 
-if [ "$2" = "-t" ]; then
-        TITLE="$3"
-        if [ -z "$TITLE" ]; then
-                echo "TITLE unset"
-                exit 2
-        fi
+export SCRIPT="script.js"
+export STYLE="style.css"
+
+while getopts ":pt:" opt; do
+  case $opt in
+    p)
+      echo "-p was triggered!" >&2
+      ;;
+    t)
+      export TITLE="$OPTARG";
+      echo "-t was triggered!" >&2
+      ;;
+    s)
+      export STYLE="style.css";
+      echo "-s was triggered!" >&2
+      ;;
+    j)
+      export SCRIPT="script.js"
+      echo "-j was triggered!" >&2
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      ;;
+  esac
+done
+
+if [ -z "$TITLE" ]; then
+        echo "TITLE unset"
+        exit 2
 fi
+
 
 DOCTYPE_HEADER='<!DOCTYPE html>'
 HTML='<html>'
@@ -23,16 +47,16 @@ if [ -z "$TITLE" ]; then
         HEADER="<head>\n
 \t<meta charset=\"utf-8\">\n
 \t<title>$TITLE</title>\n
-\t<link rel=\"stylesheet\" href=\"../style.css\">\n
-\t<script src=\"script.js\"></script>\n
+\t<link rel=\"stylesheet\" href=\"$STYLE\">\n
+\t<script src=\"$SCRIPT\"></script>\n
 </head>\n
 "
 else
         HEADER="<head>\n
 \t<meta charset=\"utf-8\">\n
 \t<title>$TITLE</title>\n
-\t<link rel=\"stylesheet\" href=\"../style.css\">\n
-\t<script src=\"script.js\"></script>\n
+\t<link rel=\"stylesheet\" href=\"$STYLE\">\n
+\t<script src=\"$SCRIPT\"></script>\n
 </head>\n
 "
 fi
