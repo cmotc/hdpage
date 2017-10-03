@@ -7,7 +7,7 @@ fi
 export SCRIPT="script.js"
 export STYLE="style.css"
 
-while getopts ":pt:s:j:" opt; do
+while getopts ":pt:" opt; do
   case $opt in
     p)
       echo "-p was triggered!" >&2
