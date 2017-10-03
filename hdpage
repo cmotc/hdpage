@@ -17,11 +17,11 @@ while getopts ":pt:" opt; do
       echo "-t was triggered!" >&2
       ;;
     s)
-      export STYLE="style.css";
+      export STYLE="$OPTARG";
       echo "-s was triggered!" >&2
       ;;
     j)
-      export SCRIPT="script.js"
+      export SCRIPT="$OPTARG";
       echo "-j was triggered!" >&2
       ;;
     \?)
